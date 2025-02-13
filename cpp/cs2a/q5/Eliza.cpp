@@ -49,6 +49,7 @@ void enter() {
     cout << "What?" << endl;
     while(true) {
         string line;
+
         getline(cin, line);
         if (line == "") {
             cout << "What?" << endl;
@@ -56,5 +57,39 @@ void enter() {
         }
         cout << "    " << line << endl << endl;
 
+        size_t found = line.find('!');
+
+        if (found != std::string::npos) {
+            cout << "OMG! You don't say!! " << line << "!!!!!" << endl;
+            continue;
+        }
+
+        size_t found_why = line.find("why");
+        size_t found_what = line.find("what");
+
+        if (found_why != std::string::npos || found_what != std::string::npos) {
+            cout << "I'm sorry, I don't like questions that contain what or why." << endl;
+            continue;
+        }
+
+        size_t found_s = line.find('s');
+
+        if (found_s != std::string::npos) {
+            cout << lispify("Interesting. When did you stop stopping your sibilans?") << endl;
+            cout << lispify(line) << "! Sheesh! Now what?" << endl;
+            continue;
+        }
+
+        if (line == "bye" || line == "quit" || line == "Bye" || line == "Quit") {
+            cout << "Ok Bye. Nice being a force of change in your life." << endl;
+            break;
+        }
+
+        int coin_toss = rand() % 10;
+        if (coin_toss < 8) {
+            cout << rotate_vowels(line) << "?" << endl;
+        } else {
+            cout << "Huh? Why do you say: " << line << "?" << endl;
+        }
     }
 }
