@@ -11,5 +11,6 @@ int main(int argc, char **argv) {
     s = "that's really cool";
     cout << s << " is rotated as: " << rotate_vowels(s) << endl;
     cout << s << endl;
+    enter();
     return 0;
 }

@@ -46,5 +46,15 @@ string lispify(string s) {
 
 // Enter the user-interaction loop as described earlier
 void enter() {
-// TODO - Your code here
+    cout << "What?" << endl;
+    while(true) {
+        string line;
+        getline(cin, line);
+        if (line == "") {
+            cout << "What?" << endl;
+            continue;
+        }
+        cout << "    " << line << endl << endl;
+
+    }
 }
