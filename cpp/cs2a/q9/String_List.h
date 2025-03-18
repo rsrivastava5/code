@@ -35,7 +35,7 @@ public:
         _head = new Node("_SENTINEL_");
         _tail = _head;
         _prev_to_current = _head;
-        _size = 1;
+        _size = 0;
     }
 
     ~String_List() {
@@ -44,7 +44,6 @@ public:
         _head = nullptr;
         _tail = nullptr;
         _prev_to_current = nullptr;
-        _size = 0;
     }
 
     String_List *insert_at_current(std::string s) {
@@ -54,7 +53,6 @@ public:
             _tail = temp;
         temp->next = _prev_to_current->next;
         _prev_to_current->next = temp;
-        _prev_to_current = temp;
         ++_size;
     
         return this;
@@ -65,7 +63,6 @@ public:
         _prev_to_current = _tail;
         insert_at_current(s);
         _prev_to_current = temp;
-        ++_size;
 
         return this;
     }
@@ -75,7 +72,6 @@ public:
         _prev_to_current = _head;
         insert_at_current(s);
         _prev_to_current = temp;
-        ++_size;
 
         return this;
     }
@@ -97,6 +93,8 @@ public:
     String_List *remove_at_current() {
         if (_prev_to_current != _tail) {
             Node *temp = _prev_to_current->next;
+            if (temp == _tail)
+                _tail = _prev_to_current;
             _prev_to_current->next = _prev_to_current->next->next;
             delete temp;
             _size--;
@@ -117,8 +115,9 @@ public:
 
     void clear() {
         rewind();
-        while (_head != _tail)
+        while (_head != _tail) {
             remove_at_current();
+        }
     }
 
     // Find a specific item. Does NOT change cursor.
@@ -158,7 +157,7 @@ public:
         }
         if (curr != _tail)
             rv += "...\n";
-
+        
         return rv;
     }
 
