@@ -16,16 +16,16 @@ using namespace std;
 // rely on the result being returned.
 string rotate_vowels(string& s) {
     for (string::iterator it = s.begin(); it != s.end(); ++it) {
-        if (*it == 'a')
-            *it = 'e';
-        else if (*it == 'e')
-            *it = 'i';
-        else if (*it == 'i')
-            *it = 'o';
-        else if (*it == 'o')
-            *it = 'u';
-        else if (*it == 'u')
-            *it = 'a';
+        if (*it == 'a' || *it == 'A')
+            *it += 'e' - 'a';
+        else if (*it == 'e' || *it == 'E')
+            *it += 'i' - 'e';
+        else if (*it == 'i' || *it == 'I')
+            *it += 'o' - 'i';
+        else if (*it == 'o' || *it == 'O')
+            *it += 'u' - 'o';
+        else if (*it == 'u' || *it == 'U')
+            *it += 'a' - 'u';
     }
     return s;
 }
