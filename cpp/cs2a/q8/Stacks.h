@@ -80,7 +80,7 @@ public:
 };
 
 class Stack_String {
-    private:
+private:
     std::vector<std::string> _data;
 
 public:
@@ -140,7 +140,7 @@ public:
             rv += "...\n";
         }
 
-        rv += "Elements, if listed above, are in increasing order of age.\n";
+        rv += "Elements, if listed above, are in increasing order of age.";
         return rv;
     }
 
