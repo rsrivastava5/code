@@ -69,7 +69,19 @@ public:
     Playlist *clear();
     Playlist *rewind();
     Playlist *push_back(const Song_Entry& s);
-    
+    Playlist *push_front(const Song_Entry& s);
+    Playlist *insert_at_cursor(const Song_Entry& s);
+    Playlist *remove_at_cursor();
+    Playlist *advance_cursor();
+    Playlist *circular_advance_cursor();
+
+    // The following return the target payload (or sentinel) reference on success
+    Song_Entry& find_by_id(int id) const;
+    Song_Entry& find_by_name(std::string songName) const;
+
+    std::string to_string() const;
+
+    friend class Tests;
 };
 
 #endif
